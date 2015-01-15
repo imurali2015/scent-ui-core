@@ -1,0 +1,99 @@
+<div class="scentui-techadmin-importcsv-mapcolumns">
+
+    <div ng-show="steps.length > 0" class="breadcrumbs">
+        <ul>
+            <li ng-repeat="p in steps"><span ng-class="{ current : p.importType == importType }">{{ p.importType | capitalize }}</span></li>
+            <li><span>Import</span></li>
+        </ul>
+    </div>
+
+    <h3>Map Columns for {{importType | capitalize}} Table</h3>
+
+    <p ng-show="unmappedCount > 0">We automatically mapped
+        <ng-pluralize
+            count="mappedCount"
+            when="{'one'  : '1 column',
+                   'other': '{} columns'}">
+        </ng-pluralize>, but we need
+        <ng-pluralize
+            count="unmappedCount"
+            when="{'one'  : '1 more column',
+                   'other': '{} more columns'}">
+        </ng-pluralize>.  Please select the columns from your table that match the required ones above.</p>
+
+    <p ng-show="unmappedCount == 0">We automatically mapped {{ mappedCount }} columns.  Do they look right?</p>
+
+
+    <div class="mappingarea">
+        <table>
+            <colgroup span="1" class="row-labels"></colgroup>
+            <colgroup ng-attr-span="{{requiredColumns.length}}" class="required"></colgroup>
+            <colgroup ng-attr-span="{{optionalColumns.length}}" class="optional"></colgroup>
+            <thead>
+                <tr>
+                    <th>Expected columns</th>
+
+                    <th ng-repeat="column in requiredColumns"><strong>{{ column.name }}</strong>
+                    <span>{{ column.type }}<br/>{{ column.note }}</span></th>
+
+                    <th ng-repeat="column in optionalColumns"><strong>{{ column.name }}</strong>
+                    <span>{{ column.type }}<br/>{{ column.note }}</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="{{ 1 + (rows | countkeys) }}">Your Table Columns</td>
+                    <td ng-repeat="req in requiredColumns" class="selector">
+                        <div>
+                            <select ng-model="columnMap.mapping[req.name]"
+                                    ng-options="c for c in columnMap.columns"
+                                    required="">
+                                <option value="">Please select</option>
+                            </select>
+                        </div>
+                    </td>
+
+                    <td ng-repeat="opt in optionalColumns" class="selector">
+                        <div>
+                            <select ng-model="columnMap.mapping[opt.name]"
+                                    ng-options="c for c in columnMap.columns"
+                                    required="">
+                                <option value="">Please select</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr ng-repeat="(rownumber, row) in rows">
+                    <td ng-repeat="sysCol in systemColumnNames">
+                        <span>{{ row | cellForColumn: sysCol:columnMap }}</span>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div class="overlay"/>
+    </div>
+
+
+    <!-- TODO: make this a directive -->
+
+    <div class="linkbar">
+        <a><i class="fa fa-download"></i>Download Templates</a>
+        <a><i class="fa fa-question-circle"></i>Need Help? Contact CS</a>
+    </div>
+
+    <hr/>
+
+    <ul class="list-inline">
+        <li><a class="btn btn-lg btn-default"
+               ng-class="btn-info"
+               ng-hide="(columnMap.mapping | countMapped) < requiredColumns.length"
+               ng-click="nextStep()">Continue</i></a></li>
+        <li><a class="btn btn-lg btn-default"
+               ng-class="btn-info"
+               ui-sref="techadmin">Cancel</i></a></li>
+    </ul>
+
+</div>

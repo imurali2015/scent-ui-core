@@ -1,0 +1,47 @@
+<div class="upload-file"
+     ng-file-drop="onFileSelect($files)"
+     ng-file-drop-available="dropSupported=true && !uploadInProgress()">
+
+    <ul class="list-inline center-block">
+        <li ng-hide='uploadInProgress() || uploadCount > 0'><span
+                class="button btn btn-lg btn-default"
+                ng-class="btn-info"
+                ng-file-select="onFileSelect($files)"
+                data-multiple="true"
+                accept=".csv,.txt">Choose the file</span></li>
+
+        <li ng-hide='uploadInProgress() || uploadCount == 0'><span
+                class="button btn btn-lg btn-default upload-success"
+                ng-class="btn-info"><i class="fa fa-check"></i></span></li>
+
+        <li ng-show='uploadInProgress()'><span
+                class="btn btn-lg btn-default"
+                ng-class="btn-info"
+                ng-click="upload.abort()">Cancel</span></li>
+    </ul>
+
+    <div ng-show="dropSupported && !uploadInProgress() && uploadCount == 0" class="center-block">or drop file here</div>
+
+    <div class="filename center-block" ng-show="uploadInProgress() || uploadCount > 0">{{ file.name }}</div>
+
+    <progressbar
+        max="max"
+        value="percentage"
+        ng-show="uploadInProgress()"><span style="color:black; white-space:nowrap;">{{percentage}}%</span></progressbar>
+
+
+
+
+        <!-- <input type="file" ng-file-select="onFileSelect($files)" multiple> -->
+<!-- ng-file-drag-over-class="dropzone" -->
+        <!-- <input type="text" ng-model="myModelObj"> -->
+        <!-- <input type="file" ng-file-select="onFileSelect($files)"> -->
+        <!-- <input type="file" ng-file-select="onFileSelect($files)" multiple accept="text/*"> -->
+        <!--               <div class="button btn btn-lg btn-default" ng-file-select="onFileSelect($files)" data-multiple="true">Choose a file to upload</div>                           ui-sref="techadmin.importcsv.upload"
+        <div ng-file-drop-available="dropSupported=true"
+           ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
+
+        -->
+        <!-- <button ng-click="upload.abort()">Cancel Upload</button> -->
+
+</div>

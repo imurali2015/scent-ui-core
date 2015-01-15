@@ -1,0 +1,40 @@
+.scentui-home {
+
+    .jumbotron {
+      margin           : 10px 0 40px 0;
+      text-align       : center;
+      background-color : white;
+
+      h1 {
+        margin      : 10px auto;
+        line-height : 1;
+
+        color       : #505050;
+
+        font : {
+            size   : 50px;
+            weight : 900;
+        }
+      }
+
+      small {
+        font-size : 14pt;
+        color     : #505050;
+
+        a {
+          color: #00bdcd;
+        }
+      }
+
+      h2 {
+
+        @include section-title;
+
+        margin: {
+          top    : 60px;
+          bottom : 45px;
+        }
+      }
+    }
+}
+

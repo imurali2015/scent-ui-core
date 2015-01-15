@@ -1,0 +1,94 @@
+<div class="row scentui-student-profile">
+
+  <h2><span>Profile</span></h2>
+
+  <form class="form-horizontal" role="form">
+
+      <div class="form-group">
+          <label class="col-sm-3 control-label">Username</label>
+          <div class="col-sm-8">
+              <input type="textfield" class="form-control" id="userName" placeholder="Username" value="{{ studentProfile.studentId }}" readonly>
+              <!-- <p class="form-control-static">{{ studentProfile.studentId }}</p> -->
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-sm-3 control-label">First Name</label>
+          <div class="col-sm-8">
+              <input type="textfield" class="form-control" id="firstName" placeholder="First Name" value="{{ studentProfile.firstName }}" readonly>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-sm-3 control-label">Middle Initial</label>
+          <div class="col-sm-8">
+              <input type="textfield" class="form-control" id="middleInitial" value="{{ studentProfile.middleInitial }}" readonly>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-sm-3 control-label">Last Name</label>
+          <div class="col-sm-8">
+              <input type="textfield" class="form-control" id="lastName" value="{{ studentProfile.lastName }}" readonly>
+          </div>
+      </div>
+
+
+      <div class="form-group">
+          <label class="col-sm-3 control-label">Suffix</label>
+          <div class="col-sm-8">
+              <input type="textfield" class="form-control" id="suffix" value="{{ studentProfile.suffix }}" readonly>
+          </div>
+      </div>
+
+
+      <div class="form-group">
+          <label class="col-sm-3 control-label">Grade</label>
+          <div class="col-sm-3">
+              <select class="form-control" id="grade" ng-model="studentProfile.grade" ng-options="g for g in grades" readonly>
+              </select>
+
+              <!-- <input type="textfield" class="form-control" id="grade" value="{{ studentProfile.grade }}" readonly> -->
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-sm-3 control-label">Date of birth</label>
+          <div class="col-sm-3">
+
+              <p class="input-group">
+                  <input type="text" class="form-control"
+                         datepicker-popup="shortDate"
+                         show-weeks="false"
+                         show-button-bar="false"
+                         datepicker-options="{ showButtonBar: false }"
+                         ng-model="studentProfile.dateOfBirth"
+                         is-open="opened"
+                         ng-required="true"
+                         readonly/>
+
+                   <span class="input-group-btn">
+                      <button type="button" class="btn btn-default form-control" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+              </p>
+
+              <!-- <datepicker ng-model="studentProfile.dateOfBirth" show-weeks="false" class="well well-sm" is-open="false"></datepicker> -->
+
+              <!-- <input type="textfield" class="form-control" id="dateOfBirth" value="{{ studentProfile.dateOfBirth }}" readonly> -->
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-sm-3 control-label">Gender</label>
+          <div class="col-sm-3">
+              <select class="form-control" id="gender" ng-model="studentProfile.gender" ng-options="g for g in genders" readonly>
+
+              <!-- <input type="textfield" class="form-control" id="gender" value="{{ studentProfile.gender }}" readonly> -->
+          </div>
+      </div>
+
+  </form>
+
+
+</div>
+

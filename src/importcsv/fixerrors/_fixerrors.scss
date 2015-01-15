@@ -1,0 +1,50 @@
+.scentui-techadmin-importcsv-fixerrors {
+
+    .fixingarea {
+        width            : 100%;
+        overflow-x       : scroll;
+        background-color : $techadmin-light-grey;
+        font-size        : smaller;
+        margin-bottom    : $vertical-gutter;
+    }
+
+    table {
+        margin: $vertical-gutter 10px;
+    }
+
+    th, td {
+        color          : black;
+        vertical-align : bottom;
+        text-align     : left;
+        border         : 2px solid $techadmin-grey;
+        letter-spacing : -0.05em;
+    }
+
+    td {
+        padding : 0;
+    }
+
+    td span {
+        padding : 4px;
+    }
+
+    td input {
+        width            : 100%;
+        margin           : 0;
+        padding          : 1px 4px;
+        border           : none;
+        background-color : ihherit; //$techadmin-color-ok;
+
+        &.ng-untouched { background-color : $techadmin-color-error; }
+    }
+
+    th {
+        min-width   : 7em;
+        padding     : 4px;
+        font-weight : bold;
+
+        &:first-child {
+            min-width: 2em;
+        }
+    }
+}

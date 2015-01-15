@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="scentui" ng-controller="AppCtrl">
+  <head>
+    <title ng-bind="pageTitle">Scholastic</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="icon" href="assets/favicon.ico"/>
+
+    <!-- bootstrap, font awesome from BootstrapCDN -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+  </head>
+  <body>
+    <div class="container">
+
+        <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" ui-sref="home"><img src="assets/images/redBar_nav.png" alt="Scholastic"></a>
+                <p class="navbar-text"><span ng-cloak>{{ district.name }}</span></p>
+            </div>
+
+            <div class="nav btn-group navbar-right" dropdown is-open="status.isopen">
+               <button type="button" class="btn navbar-btn dropdown-toggle" ng-disabled="disabled" ng-cloak>
+                    <i class="fa fa-user"></i>
+                    {{ user.firstName }}
+                    <span class="caret"></span>
+                </button>
+                <div class="dropdown-menu" role="menu" ng-show="status.isopen">
+                    <small>Signed in as:</small>
+                    <p>{{ user.firstName }} {{ user.lastName }}</p>
+                    <a class="btn-sprite" href="{{ logoutUrl }}" role="button"></a>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+
+    <div class="container" ui-view="main"></div>
+
+    <footer class="footer navbar navbar-fixed-bottom">
+        <div class="container">
+            <div class="footer-inner text-center">
+                TM &reg; &amp; &copy; 2014 <a href="http://www.scholastic.com">Scholastic Inc.</a> All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Experimental Polymer support:
+
+            This loads the latest version directly from the Polymer dev server,
+            and is not intended to be used for production.
+
+            I also tried loading it from the community-supported cdnjs site,
+            but that doesn't seem to have the latest version.
+
+                <script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.3.4/platform.js"/>
+                <script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.3.4/polymer.js"/>
+
+                <link rel="import" href="//polymer-project.org/components/polymer/polymer.html">
+
+            Eventually we'll want to do this via bower.
+
+            <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+     -->
+
+
+    <script type="text/javascript">
+        // Uncomment this when converting to home.jsp in scent-svc-core
+        //  (TODO: we need a better way to handle this)
+        //
+        // var currentUser = {
+        //         userId:    "${currentUser.userId}",
+        //         firstName: "${currentUser.firstName}",
+        //         lastName:  "${currentUser.lastName}"
+        //     };
+    </script>
+
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+
+    <!-- liveReload if needed --><% lr.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+
+
+  </body>
+</html>

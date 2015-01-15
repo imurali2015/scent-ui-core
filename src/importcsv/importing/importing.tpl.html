@@ -1,0 +1,32 @@
+<div class="scentui-techadmin-importcsv-importing">
+
+    <div ng-show="steps.length > 0" class="breadcrumbs">
+        <ul>
+            <li ng-repeat="p in steps"><span>{{ p.importType | capitalize }}</span></li>
+            <li><span class="current">Import</span></li>
+        </ul>
+    </div>
+
+    <div class="main">
+
+        <div><i class="fa fa-spinner fa-spin"></i></div>
+
+        <h3>Importing to Database</h3>
+
+        <!-- <p class="timeleft">Estimated time left: {{ timeLeft }}</p> -->
+
+        <p>We are now importing your file.
+            We will send you an email when the import finishes.
+            Import will not be interrupted if you leave this page.</p>
+
+    </div>
+
+    <hr/>
+
+    <ul class="list-inline">
+            <li><a class="btn btn-lg btn-default"
+                   ng-class="btn-info"
+                   ui-sref="techadmin"><i class="fa fa-angle-left"></i>Back to {{ schoolName }}</a></li>
+    </ul>
+
+</div>

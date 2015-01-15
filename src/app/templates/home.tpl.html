@@ -1,0 +1,31 @@
+<div class="scentui-home">
+
+    <div class="jumbotron">
+      <h1>Hi {{ user.firstName }} {{ user.lastName }}!</h1>
+
+      <p>
+        <small>Not you? <a href="{{ logoutUrl }}">Logout</a></small>
+        <!-- <small>Not you? <a ui-sref="logout">Logout</a></small> -->
+      </p>
+
+      <h2><span>Roles</span></h2>
+
+      <ul class="list-inline">
+
+        <li ng-repeat="transition in transitions">
+            <a class="btn btn-lg btn-default"
+               ng-class="{ 'btn-info' : transition.enabled, 'disabled' : !transition.enabled }"
+               ui-sref="{{ transition.name | lowercase }}">{{transition.name}}</i></a>
+        </li>
+      </ul>
+
+    </div>
+
+
+<!--         <li ng-repeat="app in apps">
+            <a class="btn btn-lg btn-success" ng-href="#/{{app.community | lowercase}}/{{classId}}"><i class="fa fa-star">{{app.name}}</i></a>
+        </li>
+ -->
+
+</div>
+

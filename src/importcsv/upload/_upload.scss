@@ -1,0 +1,40 @@
+.scentui-techadmin-importcsv-upload {
+
+    .importcsv {
+        div.info {
+            text-align: left;
+        }
+        div.uploader {
+            margin: 0px auto;
+        }
+        p {
+            margin: 10px auto;
+        }
+    }
+
+    .upload-file {
+        width   : 100%;
+        margin  : 0 auto;
+        padding : $vertical-gutter/2;
+
+        .btn {
+            width: 10em;
+        }
+    }
+
+    .dragover {
+        background-color: transparentize($techadmin-blue, 0.8);
+    }
+
+    .dropzone {
+        height        : 50px;
+        margin        : $vertical-gutter/2;
+        padding       : $vertical-gutter/2;
+        border-radius : 5px;
+        background-color: transparentize($techadmin-blue, 0.8);
+    }
+
+    .progress {
+        margin: $vertical-gutter/2 auto;
+    }
+}

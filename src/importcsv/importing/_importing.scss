@@ -1,0 +1,36 @@
+.scentui-techadmin-importcsv-importing {
+
+    i.fa-spinner {
+        font-size: 48pt;
+    }
+
+    hr {
+        border: 1px solid #dddddd;
+        margin: {
+            top    : $vertical-gutter*2/3;
+            bottom : $vertical-gutter*2/3;
+        }
+    }
+
+    p {
+        margin: {
+            top    : 5px;
+            bottom : 5px;
+        }
+    }
+
+    .main {
+        margin: {
+            top    : $vertical-gutter;
+            bottom : $vertical-gutter;
+        }
+        padding: {
+            left  : 60px;
+            right : 60px;
+        }
+    }
+
+    .timeleft {
+        font-weight: bold;
+    }
+}

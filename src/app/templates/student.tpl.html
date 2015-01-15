@@ -1,0 +1,16 @@
+<div class="scentui-student">
+
+    <h1>{{ user.firstName }} {{ user.lastName }}</h1>
+
+    <div ui-view="main">
+        <div class="row">
+            <h2><span>Student</span></h2>
+
+            <ul class="list-inline">
+                <li><a class="btn btn-lg btn-default"
+                       ng-class="btn-info"
+                       ui-sref="student.profile">Profile</i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+
+$icon-font-path: "bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
+// // bower:scss
+// @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// // endbower
+
+@import "../assets/fonts/museosans_500/stylesheet.css";
+@import "../assets/fonts/museosans_500italic/stylesheet.css";
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+
+@import "_mixins.scss";
+@import "_nav.scss";
+@import "_animate.scss";
+@import "home/_home.scss";
+@import "student/_student.scss";
+@import "techadmin/_techadmin.scss";

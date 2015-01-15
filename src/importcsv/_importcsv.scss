@@ -1,0 +1,120 @@
+.scentui-techadmin-importcsv {
+
+    margin-top: $vertical-gutter*2/3;
+
+    > ul.list-inline {
+        text-align : left;
+        color      : $techadmin-blue;
+
+        a {
+            color : $techadmin-blue;
+        }
+    }
+
+    hr {
+        border-top: 2px solid #ddd;
+        margin-top: $vertical-gutter/2;
+    }
+
+
+    .breadcrumbs {
+
+        $breadcrumb-height : 40px;
+        $arrow-size        : $breadcrumb-height/2;
+        $arrow-gap         : 4px;
+
+        text-align: right;
+
+        ul {
+            list-style : none;
+            display    : inline-table;
+
+            li {
+                display: inline;
+
+                span {
+                    display         : block;
+                    float           : left;
+                    height          : $breadcrumb-height;
+                    background      : $techadmin-light-grey;
+                    text-align      : center;
+                    padding         : 12px ($arrow-size - $arrow-gap*3) 0 ($arrow-size + $arrow-gap*3);
+                    position        : relative;
+                    margin          : $arrow-gap/2 $arrow-gap $arrow-gap/2 0;
+
+                    font-size       : smaller;
+                    font-weight     : bold;
+                    text-decoration : none;
+                    color           : black;
+
+                    &:after {
+                        content       : "";
+                        border-top    : $arrow-size solid transparent;
+                        border-bottom : $arrow-size solid transparent;
+                        border-left   : $arrow-size solid $techadmin-light-grey;
+                        position      : absolute;
+                        right         : -$arrow-size;
+                        top           : 0;
+                        z-index       : 1;
+                    }
+
+                    &:before {
+                        content       : "";
+                        border-top    : $arrow-size solid transparent;
+                        border-bottom : $arrow-size solid transparent;
+                        border-left   : $arrow-size solid white;
+                        position      : absolute;
+                        left          : 0;
+                        top           : 0;
+                    }
+
+                    &.current {
+                        background: $techadmin-medium-grey;
+                    }
+
+                    &.current:after {
+                        border-left-color: $techadmin-medium-grey;
+                    }
+                }
+
+                &:first-child span {
+                    padding-left              : $arrow-size;
+                    border-top-left-radius    : $arrow-gap;
+                    border-bottom-left-radius : $arrow-gap;
+
+                    &:before {
+                        display: none;
+                    }
+                }
+
+                &:last-child span {
+                    padding-right              : $arrow-size;
+                    border-top-right-radius    : $arrow-gap;
+                    border-bottom-right-radius : $arrow-gap;
+
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+    .linkbar {
+        margin-top : $vertical-gutter;
+        font-size  : small;
+
+        a {
+            margin: 0px 10px;
+        }
+    }
+}
+
+@import "techadmin/importcsv/upload/_upload.scss";
+@import "techadmin/importcsv/mapcolumns/_mapcolumns.scss";
+@import "techadmin/importcsv/fixerrors/_fixerrors.scss";
+@import "techadmin/importcsv/importing/_importing.scss";
+

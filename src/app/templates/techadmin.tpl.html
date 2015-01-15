@@ -1,0 +1,64 @@
+<div class="scentui-techadmin">
+
+    <!-- <h1>{{ user.firstName }} {{ user.lastName }}, tech admin</h1> -->
+
+    <div ui-view="">
+        <div class="row">
+            <h2><span>{{ schoolName }}</span></h2>
+
+            <ul class="actions list-inline">
+                <li><a class="btn btn-default"
+                       ng-class="btn-info"
+                       ui-sref="techadmin.importcsv.upload"><i class="fa fa-file-o"></i>Import CSV</i></a></li>
+            </ul>
+        </div>
+        <div class="row import-jobs">
+
+            <span><i class="fa fa-spinner"></i>
+                  <ng-pluralize count="(processes | filter:{ status: '!completed' }).length"
+                    when="{'0'    : 'No jobs in progress.',
+                           'one'  : '1 job in progress.',
+                           'other': '{} jobs in progress..'}">
+                  </ng-pluralize></span>
+
+            <span class="dropdown" on-toggle="toggled(open)">
+                <a href class="dropdown-toggle">See job list</a>
+                <ul class="dropdown-menu">
+                    <li ng-repeat="process in processes">
+                        <div class="import-job">
+                            <div>
+                                <span class="pull-left job-desc">Import by {{ process.userId }}</span>
+                                <span class="pull-right">{{ process.createdAt | date:'medium' }}</span>
+                            </div>
+                            <div>
+                                <span class="pull-left">{{ process.filename }}</span>
+                                <a class="pull-right" ng-show="process.status == 'errors'" ui-sref="techadmin.importcsv.fixerrors({ importType: process.importType, processId : process.id })">Please fix errors</a>
+                                <span class="pull-right" ng-hide="process.status == 'errors'">{{ process.percentComplete }}% complete</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </span>
+
+            <!-- <table>
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lorem ipsum</td>
+                        <td>Lorem ipsum</td>
+                    </tr>
+                    <tr>
+                        <td>Lorem ipsum</td>
+                        <td>Lorem ipsum</td>
+                    </tr>
+                </tbody>
+            </table> -->
+
+        </div>
+    </div>
+</div>

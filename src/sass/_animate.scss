@@ -1,0 +1,50 @@
+@mixin slide-animation($seconds) {
+
+    transition : transform $seconds linear; // ease-in-out;
+    transform  : translateX(0);
+
+    &.ng-enter {
+        transform : translateX(-100%);
+    }
+
+    &.ng-enter.ng-enter-active, &.ng-leave {
+        position  : absolute;
+        transform : translateX(0);
+    }
+
+    &.ng-leave.ng-leave-active {
+        transform : translateX(100%);
+    }
+}
+
+.slide {
+
+    @include slide-animation(0.8s);
+
+}
+
+
+
+@mixin fade-animation($seconds) {
+
+    transition : opacity $seconds ease-in-out;
+    opacity    : 1;
+
+    &.ng-enter {
+        opacity: 0;
+    }
+
+    &.ng-enter.ng-enter-active, &.ng-leave {
+        opacity: 1;
+    }
+
+    &.ng-leave.ng-leave-active {
+        opacity: 0;
+    }
+}
+
+.fade {
+
+    @include fade-animation(0.5s);
+
+}

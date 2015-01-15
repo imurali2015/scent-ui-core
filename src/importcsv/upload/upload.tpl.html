@@ -1,0 +1,34 @@
+<div class="scentui-techadmin-importcsv-upload">
+
+    <div ng-repeat="importType in importTypes" class="importcsv row">
+        <div class="col-sm-2"/>
+        <div class="col-sm-4 info">
+            <h4>{{importType | capitalize}}</h4>
+            <p><i class="fa fa-caret-right"></i> View required and optional fields</p>
+        </div>
+        <div class="col-sm-4 uploader">
+            <upload-file type="importType" success="handleSuccess"></upload-file>
+        </div>
+    </div>
+
+
+    <!-- TODO: make this a directive -->
+
+    <div class="linkbar">
+        <a><i class="fa fa-download"></i>Download Templates</a>
+        <a><i class="fa fa-question-circle"></i>Need Help?  Contact CS</a>
+    </div>
+
+    <hr/>
+
+    <ul class="list-inline">
+        <li><a class="btn btn-lg btn-default"
+               ng-class="btn-info"
+               ng-show="importProcesses | countkeys"
+               ng-click="nextStep()">Continue</i></a></li>
+        <li><a class="btn btn-lg btn-default"
+               ng-class="btn-info"
+               ui-sref="techadmin">Cancel</i></a></li>
+    </ul>
+
+</div>

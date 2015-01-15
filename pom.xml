@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>scholastic.superpom</groupId>
+        <artifactId>root</artifactId>
+        <version>2.0-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
+    <groupId>com.scholastic.scent</groupId>
+    <artifactId>scent.ui.core</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <properties>
+        <node.version>v0.10.33</node.version>
+        <npm.version>2.1.14</npm.version>
+    </properties>
+    <build>
+        <finalName>scent-ui-core</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <executions>
+                    <!-- clean out downloaded node binaries -->
+                    <execution>
+                        <id>clean-node-bin</id>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                        <phase>clean</phase>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>node/</directory>
+                                </fileset>
+                                <!-- added in case an error occurs while downloading/installing node -->
+                                <fileset>
+                                    <directory>node_tmp/</directory>
+                                </fileset>
+                                <fileset>
+                                    <directory>node_modules/</directory>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>0.0.20</version>
+
+                <executions>
+                    <execution>
+                        <id>default-grunt</id>
+                        <goals>
+                            <goal>grunt</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>default</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <!-- not a true war with Servlets and such, no web.xml required 
+                    as of superpom 2.0 this will no longer be required-->
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+
+                    <webResources>
+                        <resource>
+                            <directory>${basedir}/dist</directory>
+                            <excludes>
+                                <exclude>**/README.md</exclude>
+                            </excludes>
+                        </resource>
+                    </webResources>
+
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,70 @@
+<div class="scentui-techadmin-importcsv-fixerrors">
+
+    <div ng-show="steps.length > 0" class="breadcrumbs">
+        <ul>
+            <li ng-repeat="p in steps"><span ng-class="{ current : p.importType == importType }">{{ p.importType | capitalize }}</span></li>
+            <li><span>Import</span></li>
+        </ul>
+    </div>
+
+    <h3>Please Fix These Errors</h3>
+
+
+    <p>We have found
+        <ng-pluralize
+            count="errors.length"
+            when="{'one'  : '1 problem',
+                   'other': '{} problems'}">
+        </ng-pluralize> on
+        <ng-pluralize
+            count="(rows | countkeys)"
+            when="{'one'  : '1 row',
+                   'other': '{} rows'}">
+        </ng-pluralize>.</p>
+
+
+    <div class="fixingarea">
+        <table>
+            <thead>
+                <tr>
+                    <th>Row</th>
+                    <th ng-repeat="column in columns">{{ column }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(rownumber, row) in rows">
+                    <td><span>{{rownumber}}</span></td>
+                    <td ng-repeat="cell in row track by $index">
+                        <input type="text"
+                            ng-model="errorMap[cellkey(rownumber, $index+1)].value"
+                            ng-hide="!hasError(rownumber, $index+1)"
+                            required></input>
+                        <span ng-hide="hasError(rownumber, $index+1)">{{ cell }}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- TODO: make this a directive -->
+
+    <div class="linkbar">
+        <a><i class="fa fa-file"></i>Download Error Report</a>
+        <a><i class="fa fa-download"></i>Download Templates</a>
+        <a><i class="fa fa-question-circle"></i>Need Help? Contact CS</a>
+    </div>
+
+    <hr/>
+
+    <ul class="list-inline">
+        <li><a class="btn btn-lg btn-default"
+               ng-class="btn-info"
+               ng-hide=""
+               ng-click="nextStep()">Continue</i></a></li>
+        <li><a class="btn btn-lg btn-default"
+               ng-class="btn-info"
+               ui-sref="techadmin">Cancel</i></a></li>
+    </ul>
+
+</div>
